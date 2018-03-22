@@ -10,6 +10,7 @@ include_once '../objects/Student.php';
 // instantiate database and student object
 $database = new Database();
 $db = $database->getConnection();
+$project = explode('/', $_SERVER['REQUEST_URI'])[1];
 
 // initialize object
 $student = new Student($db);
@@ -35,7 +36,7 @@ if($num>0){
             "id" => $id,
             "name" => $name,
             "address" => html_entity_decode($address),
-            "paymentInfo" => "http://localhost/API02/student/read_one.php?id=".$id,
+            "paymentInfo" => "http://localhost/".$project."/student/read_one.php?id=".$id,
 
         );
 

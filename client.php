@@ -18,9 +18,9 @@
 </head>
 <body>
 <?php
-$json_string = file_get_contents("http://localhost/API02/student/read.php");
+$project = explode('/', $_SERVER['REQUEST_URI'])[1];
+$json_string = file_get_contents("http://localhost/".$project."/student/read.php");
 $value =  json_decode($json_string);
-
 ?>
 
     <div class="container">
@@ -41,7 +41,7 @@ $value =  json_decode($json_string);
                 <td><?php echo $data->name ?></td>
                 <td><?php echo $data->address ?></td>
                 <td>
-                    <a href="http://localhost/API02/clientView.php?id=<?php echo $data->id ?>" class="btn btn-info">showPayment</a>
+                    <a href="http://localhost/<?php echo $project?>/clientView.php?id=<?php echo $data->id ?>" class="btn btn-info">showPayment</a>
                 </td>
             </tr>
             <?php endforeach; ?>

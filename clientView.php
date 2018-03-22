@@ -18,8 +18,9 @@
 </head>
 <body>
 <?php
+$project = explode('/', $_SERVER['REQUEST_URI'])[1];
 $ids = isset($_GET['id']) ? $_GET['id'] : die();
-$json_string = file_get_contents("http://localhost/API02/student/read_one.php?id=".$ids);
+$json_string = file_get_contents("http://localhost/".$project."/student/read_one.php?id=".$ids);
 $value = json_decode($json_string);
 
 ?>
@@ -36,8 +37,8 @@ $value = json_decode($json_string);
         <h3>Paid amount:<b> <?php echo $data->paidAmount ?></h3>
         <h3>Due amount:<b> <?php echo $data->dueAmount ?></h3>
         <td>
-            <a class="btn btn-danger" href="http://localhost/API02/client.php">Back</a>
-            <a class="btn btn-success" href="http://localhost/API02/clientPayment.php?id=<?php echo $data->student_id ?>" class="btn btn-info">Update Payment</a>
+            <a class="btn btn-danger" href="http://localhost/<?php echo $project?>/client.php">Back</a>
+            <a class="btn btn-success" href="http://localhost/<?php echo $project?>/clientPayment.php?id=<?php echo $data->student_id ?>" class="btn btn-info">Update Payment</a>
         </td>
 
     <?php endforeach; ?>
