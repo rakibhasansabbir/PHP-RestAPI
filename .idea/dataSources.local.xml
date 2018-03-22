@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="api_db@localhost" uuid="b4fed248-ebc5-493a-874d-a6c735247b1d">
+    <data-source name="studentDB@localhost" uuid="3a0ada52-9d0e-4b34-8fc1-a6e9122af42f">
       <database-info product="MySQL" version="5.7.21-0ubuntu0.17.10.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 )">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
@@ -9,7 +9,7 @@
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:api_db</introspection-schemas>
+      <introspection-schemas>*:studentDB</introspection-schemas>
     </data-source>
   </component>
 </project>
