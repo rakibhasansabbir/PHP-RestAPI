@@ -22,7 +22,7 @@ $ids = isset($_GET['id']) ? $_GET['id'] : die();
 $student->id = $ids;
 
 // set student payment values
-$student->paidAmount = $_POST["paidAmount"];
+$student->paidAmount += $_POST["paidAmount"];
 
 
 // update the student

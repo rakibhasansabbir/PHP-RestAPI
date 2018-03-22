@@ -1,5 +1,7 @@
 <?php
-class Student{
+
+class Student
+{
 
     // database connection and table name
     private $conn;
@@ -13,15 +15,17 @@ class Student{
 
 
     // constructor with $db as database connection
-    public function __construct($db){
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
     // read single Student
-    function read(){
+    function read()
+    {
 
         // select all query
-        $query = "SELECT * FROM ". $this->table_name ;
+        $query = "SELECT * FROM " . $this->table_name;
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -33,13 +37,14 @@ class Student{
     }
 
 
-
     // used when filling up the update student form
-    function readOne($ids){
+    function readOne($ids)
+    {
 
 
-        $query = "SELECT students.id, students.name,students.address, fees_collections.feesAmount,fees_collections.paidAmount FROM studentDB.fees_collections, studentDB.students
- where students.id = $ids and fees_collections.id = $ids";
+        $query = "SELECT $this->table_name.id, $this->table_name.name,$this->table_name.address,
+                  $this->table_name2.feesAmount,$this->table_name2.paidAmount FROM $this->table_name2,
+                  students where students.id = $ids and $this->table_name2.id = $ids";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -52,7 +57,8 @@ class Student{
     }
 
     // update payment
-    function update(){
+    function update()
+    {
 
         // update query
         $query = "UPDATE
@@ -68,21 +74,20 @@ class Student{
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->paidAmount=htmlspecialchars(strip_tags($this->paidAmount));
-        $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->paidAmount = htmlspecialchars(strip_tags($this->paidAmount));
+        $this->id = htmlspecialchars(strip_tags($this->id));
 
         // bind new values
         $stmt->bindParam(':paidAmount', $this->paidAmount);
         $stmt->bindParam(':id', $this->id);
 
         // execute the query
-        if($stmt->execute()){
+        if ($stmt->execute()) {
             return true;
         }
 
         return false;
     }
-
 
 
 }
