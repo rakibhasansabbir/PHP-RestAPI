@@ -33,7 +33,8 @@ $value = json_decode($json_string);
 
                 <div class="form-group">
                     <label for="paidAmount">Amount:</label>
-                    <input type="text" class="form-control" value="<?php echo $data->paidAmount ?>"  name="paidAmount" placeholder="Place your amount here">
+                    <input type="hidden" class="form-control" value="<?php echo $data->paidAmount ?>"  name="oldAmount">
+                    <input type="text" class="form-control"   name="paidAmount" placeholder="Place your amount here">
                 </div>
             <a class="btn btn-danger" href="http://localhost/<?php echo $project?>/clientView.php?id=<?php echo $ids ?>">Back</a>
                 <button type="submit" class="btn btn-success">Submit</button>

@@ -37,7 +37,7 @@ $value = json_decode($json_string);
         <h3>Paid amount:<b> <?php echo $data->paidAmount ?></h3>
         <h3>Due amount:<b> <?php echo $data->dueAmount ?></h3>
         <td>
-            <a class="btn btn-danger" href="http://localhost/<?php echo $project?>/client.php">Back</a>
+            <a class="btn btn-danger" href="http://localhost/<?php echo $project?>/findClient.php">Back</a>
             <a class="btn btn-success" href="http://localhost/<?php echo $project?>/clientPayment.php?id=<?php echo $data->student_id ?>" class="btn btn-info">Update Payment</a>
         </td>
 
