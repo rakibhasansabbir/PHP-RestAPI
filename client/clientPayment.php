@@ -20,26 +20,25 @@
 <?php
 $project = explode('/', $_SERVER['REQUEST_URI'])[1];
 $ids = isset($_GET['id']) ? $_GET['id'] : die();
-$json_string = file_get_contents("http://localhost/".$project."/student/read_one.php?id=".$ids);
+$json_string = file_get_contents("http://localhost/".$project."/server/read_one.php?id=".$ids);
 $value = json_decode($json_string);
 
 ?>
 
 <div class="container">
+    <h1>Pay Amount</h1>
 
     <?php foreach ($value->data as $idx => $data): ?>
-        <h1>Information about <b><?php echo $data->name ?></b>  </h1>
+        <form action="http://localhost/<?php echo $project?>/server/update.php?id=<?php echo $ids ?>" method="post">
 
-        <h2>Student ID:<b> <?php echo $data->student_id ?></h2>
-        <h3>Address:<b> <?php echo $data->address ?></h3>
-        <h3>Payment status:<b> <?php echo $data->feesStatus ?></h3>
-        <h3>Total amount:<b> <?php echo $data->feesAmount ?></h3>
-        <h3>Paid amount:<b> <?php echo $data->paidAmount ?></h3>
-        <h3>Due amount:<b> <?php echo $data->dueAmount ?></h3>
-        <td>
-            <a class="btn btn-danger" href="http://localhost/<?php echo $project?>/findClient.php">Back</a>
-            <a class="btn btn-success" href="http://localhost/<?php echo $project?>/clientPayment.php?id=<?php echo $data->student_id ?>" class="btn btn-info">Update Payment</a>
-        </td>
+                <div class="form-group">
+                    <label for="paidAmount">Amount:</label>
+                    <input type="text" class="form-control"   name="paidAmount" placeholder="Place your amount here">
+                </div>
+            <a class="btn btn-danger" href="http://localhost/<?php echo $project?>/client/clientView.php?id=<?php echo $ids ?>">Back</a>
+                <button type="submit" class="btn btn-success">Submit</button>
+
+        </form>
 
     <?php endforeach; ?>
 

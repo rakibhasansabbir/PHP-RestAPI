@@ -1,42 +1,49 @@
 <?php
-// required headers
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Headers: access");
+header("Access-Control-Allow-Methods: GET");
+header("Access-Control-Allow-Credentials: true");
+header('Content-Type: application/json');
 
 // include database and object files
 include_once '../config/database.php';
 include_once '../objects/Student.php';
 
-// instantiate database and student object
+// get database connection
 $database = new Database();
 $db = $database->getConnection();
-$project = explode('/', $_SERVER['REQUEST_URI'])[1];
+
 
 // initialize object
 $student = new Student($db);
+// set ID property of server to be edited
+$student->id = isset($_GET['id']) ? $_GET['id'] : die();
+$ids = isset($_GET['id']) ? $_GET['id'] : die();
 
 // query products
-$stmt = $student->read();
-$num = $stmt->rowCount();
+$stmt = $student->readOne($ids);
 
+$num = $stmt->rowCount();
 // check if more than 0 record found
 if($num>0){
 
-    // student array
+    // server array
     $student_arr=array();
     $student_arr["data"]=array();
 
     // retrieve our table contents
-
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
         extract($row);
 
         $student_info=array(
-            "id" => $id,
+            "student_id" => $id,
             "name" => $name,
             "address" => html_entity_decode($address),
-            "paymentInfo" => "http://localhost/".$project."/student/read_one.php?id=".$id,
+            "feesStatus" => $feesAmount <= $paidAmount ? "paid" : "due" ,
+            "feesAmount" => $feesAmount,
+            "paidAmount" => $paidAmount,
+            "dueAmount" => $feesAmount - $paidAmount,
 
         );
 

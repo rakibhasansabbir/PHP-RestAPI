@@ -20,7 +20,7 @@
 <?php
 $project = explode('/', $_SERVER['REQUEST_URI'])[1];
 //$ids = isset($_GET['id']) ? $_GET['id'] : die();
-//$json_string = file_get_contents("http://localhost/".$project."/student/read_one.php?id=".$ids);
+//$json_string = file_get_contents("http://localhost/".$project."/server/read_one.php?id=".$ids);
 //$value = json_decode($json_string);
 
 ?>
@@ -29,7 +29,7 @@ $project = explode('/', $_SERVER['REQUEST_URI'])[1];
     <h1>Check Status</h1>
 
 <!--    --><?php //foreach ($value->data as $idx => $data): ?>
-        <form action="http://localhost/<?php echo $project?>/clientView.php?id={id}" method="get">
+        <form action="http://localhost/<?php echo $project?>/client/clientView.php?id={id}" method="get">
 
             <div class="form-group">
                 <label for="paidAmount">StudentID:</label>

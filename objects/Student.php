@@ -36,8 +36,23 @@ class Student
         return $stmt;
     }
 
+    // read paid amount
+    function amount($stId)
+    {
 
-    // used when filling up the update student form
+        // select all query
+        $query = "select paidAmount from fees_collections where student_id = $stId";
+
+        foreach ($this->conn->query($query) as $row) {
+            $amount = $row['paidAmount'];
+
+        }
+
+        return $amount;
+    }
+
+
+    // used when filling up the update server form
     function readOne($ids)
     {
 
