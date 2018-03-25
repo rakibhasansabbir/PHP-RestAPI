@@ -35,12 +35,20 @@ if($num>0){
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
         extract($row);
+        if($paidAmount == 0){
+            $status = "Pending";
+        }elseif ($feesAmount <= $paidAmount){
+            $status = "Paid";
+        }else{
+
+            $status = "Due";
+        }
 
         $student_info=array(
             "student_id" => $id,
             "name" => $name,
             "address" => html_entity_decode($address),
-            "feesStatus" => $feesAmount <= $paidAmount ? "paid" : "due" ,
+            "feesStatus" => $status,
             "feesAmount" => $feesAmount,
             "paidAmount" => $paidAmount,
             "dueAmount" => $feesAmount - $paidAmount,
