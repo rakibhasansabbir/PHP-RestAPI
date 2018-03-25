@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../PHP-RestAPI2/.idea/PHP-RestAPI.iml" filepath="$PROJECT_DIR$/../PHP-RestAPI2/.idea/PHP-RestAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PHP-RestAPI.iml" filepath="$PROJECT_DIR$/.idea/PHP-RestAPI.iml" />
     </modules>
   </component>
 </project>

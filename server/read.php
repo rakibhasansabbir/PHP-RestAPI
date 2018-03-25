@@ -18,6 +18,8 @@ $student = new Student($db);
 // query products
 $stmt = $student->read();
 $num = $stmt->rowCount();
+$test = 5454;
+
 
 
 // check if more than 0 record found
