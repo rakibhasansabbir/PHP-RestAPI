@@ -50,10 +50,19 @@ $value = json_decode($json_string);
 
 ?>
 
-<div class="container ">
+<div class="container text-center">
+
+    <?php if(count($value->message) == 1):  ?>
+        <div class="jumbotron">
+            <h1>
+
+                <?php echo $value->message?>
+            </h1>
+
+        </div>
+    <?php else:  ?>
 
     <?php foreach ($value->data as $idx => $data): ?>
-
 
         <div class="card">
 
@@ -73,6 +82,7 @@ $value = json_decode($json_string);
         </div>
 
     <?php endforeach; ?>
+    <?php endif; ?>
 
 </div>
 

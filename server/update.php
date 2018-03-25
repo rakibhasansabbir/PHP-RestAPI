@@ -39,8 +39,7 @@ if($student->update()){
     echo '{';
     echo '"message": "Payment successfully updated."';
     echo '}';
-    header("refresh:3; url= /".$project."/client/clientView.php?id=$ids");
-
+//    header("refresh:3; url= /".$project."/client/clientView.php?id=$ids");
 }
 
 // if unable to update the server, tell the user
@@ -48,6 +47,6 @@ else{
     echo '{';
     echo '"message": "Unable to update payment."';
     echo '}';
-    header("refresh:3; url= /".$project."/client/clientPayment.php?id=$ids");
+//    header("refresh:3; url= /".$project."/client/clientPayment.php?id=$ids");
 }
 ?>

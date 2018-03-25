@@ -60,10 +60,9 @@ if($num>0){
 
     echo json_encode($student_arr);
 }
-
 else{
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "No student found.")
     );
 }
 ?>
